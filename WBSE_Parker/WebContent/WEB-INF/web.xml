@@ -5,12 +5,15 @@
   
   
   
-  
     <servlet>
 		<servlet-name>getPriceData</servlet-name>
 		<servlet-class>com.example.model.getPriceData</servlet-class>
 	</servlet>
-        <servlet>
+	 <servlet>
+		<servlet-name>getAreaData</servlet-name>
+		<servlet-class>com.example.model.GetAreaParking</servlet-class>
+	</servlet>
+     <servlet>
 		<servlet-name>getPieChart</servlet-name>
 		<servlet-class>com.example.model.getPieChart</servlet-class>
 	</servlet>
@@ -19,13 +22,16 @@
 		<url-pattern>/getPriceData.do</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+		<servlet-name>getAreaData</servlet-name>
+		<url-pattern>/getAreaParking.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>getPieChart</servlet-name>
 		<url-pattern>/getPieChart.do</url-pattern>
 	</servlet-mapping>
 	
-	
   <welcome-file-list>
 
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>compare.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
