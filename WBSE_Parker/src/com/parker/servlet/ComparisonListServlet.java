@@ -23,35 +23,44 @@ public class ComparisonListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {// store the name and id
+
+		String indexURL = "index.jsp";
+		String URL = "https://alex100433.cartodb.com/viz/c1d5ed3a-36f4-11e6-aa6b-0ecfd53eb7d3/embed_map";
 		HttpSession session = request.getSession();
 		ArrayList<HistoryObject> compareList;
-		
+
 		HistoryObject history = new HistoryObject();
 
-		if(session.getAttribute("compareList")==null){
+		if (session.getAttribute("compareList") == null) {
 			compareList = new ArrayList<HistoryObject>();
-		}else{
+			session.setAttribute("compareList", compareList);
+		} else {
 			compareList = (ArrayList<HistoryObject>) session.getAttribute("compareList");
 		}
-		
+
 		boolean addFlag = true;
-		for(int i =0;i<compareList.size();++i){
-			if(compareList.get(i).getId().equals(request.getParameter("id"))){
+		for (int i = 0; i < compareList.size(); ++i) {
+			if (compareList.get(i).getId().equals(request.getParameter("id"))) {
 				addFlag = false;
 				break;
 			}
 			System.out.println(compareList.get(i).getId());
 		}
-		
-		System.out.println(session.getAttribute("compareList"));
-		history.setId((String)request.getParameter("id"));
-		history.setName((String)request.getParameter("name"));
 
-		if(addFlag)
+		System.out.println(session.getAttribute("compareList"));
+		history.setId((String) request.getParameter("id"));
+		history.setName((String) request.getParameter("name"));
+
+		if (addFlag)
 			compareList.add(history);
 
-		session.setAttribute("compareList", compareList);
-		response.sendRedirect("https://alex100433.cartodb.com/viz/c1d5ed3a-36f4-11e6-aa6b-0ecfd53eb7d3/embed_map");
+		if (request.getParameter("act") != null)
+			if (request.getParameter("act").equals("c")) {
+				session.removeAttribute("compareList");
+
+				URL = indexURL;
+			}
+		response.sendRedirect(URL);
 
 	}
 

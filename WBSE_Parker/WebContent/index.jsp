@@ -79,7 +79,7 @@
         <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1300px;
             height: 800px; overflow: hidden;">
             <div >
-							<iframe scrolling="no" height="100%" width="100%"  src="https://alex100433.cartodb.com/viz/c1d5ed3a-36f4-11e6-aa6b-0ecfd53eb7d3/embed_map"></iframe	>
+				<iframe scrolling="no" height="100%" width="100%"  src="https://alex100433.cartodb.com/viz/c1d5ed3a-36f4-11e6-aa6b-0ecfd53eb7d3/embed_map"></iframe	>
             </div>
 
         </div>
@@ -114,7 +114,7 @@
     </div>
     <div class="modal-footer">
       <a href="#" class="btn">Compare!</a>
-      <a href="#" class="btn">Clear!</a>
+      <a href="http://127.0.0.1:8080/WBSE_Parker/ComparisonListServlet.do?act=c" class="btn">Clear!</a>
     </div>
   </div>
 <!-- shopping cart End -->
