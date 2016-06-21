@@ -113,7 +113,7 @@
 		<!-- jsp end -->
     </div>
     <div class="modal-footer">
-      <a href="#" class="btn">Compare!</a>
+      <a href="compare.jsp" class="btn">Compare!</a>
       <a href="http://127.0.0.1:8080/WBSE_Parker/ComparisonListServlet.do?act=c" class="btn">Clear!</a>
     </div>
   </div>
