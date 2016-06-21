@@ -27,7 +27,7 @@
    </body>
 </html>
 
-<script type="text/javascript">
+<script>
 $(document).ready(function(){
 	 var compareID=new Array()[5];
 	  compareID[0]=request.getParameter("compareID1");  
