@@ -25,37 +25,30 @@ public class ComparisonListServlet extends HttpServlet {
 			throws ServletException, IOException {// store the name and id
 		HttpSession session = request.getSession();
 		ArrayList<HistoryObject> compareList;
-		compareList = (ArrayList<HistoryObject>) session.getAttribute("compareList");
+		
 		HistoryObject history = new HistoryObject();
 
-		String act = request.getParameter("act");
-		if (act == null) {
-
-		} else if (act.equals("delete")) {// press the button of clear
-			compareList.clear();
-		}
-
-		if (compareList == null) {
+		if(session.getAttribute("compareList")==null){
 			compareList = new ArrayList<HistoryObject>();
+			session.setAttribute("compareList", compareList);
+		}else{
+			compareList = (ArrayList<HistoryObject>) session.getAttribute("compareList");
 		}
-
+		
+		boolean addFlag = true;
+		for(int i =0;i<compareList.size();++i){
+			if(compareList.get(i).getId().equals(request.getParameter("id"))){
+				addFlag = false;
+				break;
+			}
+		}
+		
+		
 		history.setId((String)request.getParameter("id"));
 		history.setName((String)request.getParameter("name"));
 
-		boolean addFlag = true;
-		for (HistoryObject newsVar : compareList) {
-			if (newsVar.getId().equals(history.getId())) {
-				addFlag = false;
-			}
-		}
-		if (addFlag) {
+		if(addFlag)
 			compareList.add(history);
-		}
-
-		session.setAttribute("compareList", compareList);
-		
-		response.sendRedirect(request.getParameter("id"));
-		
 	}
 
 	/**
