@@ -52,7 +52,7 @@ function dashboard(id, fData){
     // function to handle histogram.
     function histoGram(fD){
         var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
-        hGDim.w = 1050 - hGDim.l - hGDim.r,
+        hGDim.w = 1050 - hGDim.l - hGDim.r, 
         hGDim.h = 720 - hGDim.t - hGDim.b;
 
         //create svg for histogram.
@@ -243,7 +243,7 @@ function dashboard(id, fData){
 <script>
 $.ajax({
 	  dataType: "json",
-	  url: "http://localhost:8080/WBSE_Parker/getPriceData.do",
+	  url: "http://127.0.0.1:8080/WBSE_Parker/getPriceData.do",
 	  data: "get",
 	  success: function(data){
 		  console.log(data);
