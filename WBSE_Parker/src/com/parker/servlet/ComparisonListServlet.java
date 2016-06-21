@@ -30,7 +30,6 @@ public class ComparisonListServlet extends HttpServlet {
 
 		if(session.getAttribute("compareList")==null){
 			compareList = new ArrayList<HistoryObject>();
-			session.setAttribute("compareList", compareList);
 		}else{
 			compareList = (ArrayList<HistoryObject>) session.getAttribute("compareList");
 		}
@@ -41,14 +40,19 @@ public class ComparisonListServlet extends HttpServlet {
 				addFlag = false;
 				break;
 			}
+			System.out.println(compareList.get(i).getId());
 		}
 		
-		
+		System.out.println(session.getAttribute("compareList"));
 		history.setId((String)request.getParameter("id"));
 		history.setName((String)request.getParameter("name"));
 
 		if(addFlag)
 			compareList.add(history);
+
+		session.setAttribute("compareList", compareList);
+		response.sendRedirect("https://alex100433.cartodb.com/viz/c1d5ed3a-36f4-11e6-aa6b-0ecfd53eb7d3/embed_map");
+
 	}
 
 	/**

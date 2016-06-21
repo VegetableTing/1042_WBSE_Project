@@ -43,7 +43,7 @@ public class getPriceFromDB {
 			for (int i = 0; i < temp_area.size(); i++) {
 
 				String query_low = "SELECT * FROM `simple_parking_fee` WHERE fee<=? AND taiwanArea = ? AND fee>=0";
-				String query_mid = "SELECT * FROM `simple_parking_fee` WHERE fee<=? AND ?<=fee AND taiwanArea = ? AND fee>=0";
+				String query_mid = "SELECT * FROM `simple_parking_fee` WHERE fee>=? AND fee<=? AND taiwanArea = ? AND fee>=0";
 				String query_high = "SELECT * FROM `simple_parking_fee` WHERE fee>=? AND taiwanArea = ? AND fee>=0";
 
 				PreparedStatement preparedStmt_low = connection.prepareStatement(query_low);
