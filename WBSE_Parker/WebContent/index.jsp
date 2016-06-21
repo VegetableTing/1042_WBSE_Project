@@ -37,6 +37,54 @@
 <link rel="stylesheet" type="text/css" href="css/custom.css">
 <!-- shopping cart CSS-->
 <link rel="stylesheet" type="text/css" href="css/yee.css">
+<!-- windows-->
+<script src="js/jquery-3.0.0.min.js" type="text/javascript"></script>
+<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+<style type="text/css">
+/**
+ * Simple fade transition,
+ */
+.mfp-fade.mfp-bg {
+	opacity: 0;
+	-webkit-transition: all 0.15s ease-out; 
+	-moz-transition: all 0.15s ease-out; 
+	transition: all 0.15s ease-out;
+}
+.mfp-fade.mfp-bg.mfp-ready {
+	opacity: 0.8;
+}
+.mfp-fade.mfp-bg.mfp-removing {
+	opacity: 0;
+}
+
+.mfp-fade.mfp-wrap .mfp-content {
+	opacity: 0;
+	-webkit-transition: all 0.15s ease-out; 
+	-moz-transition: all 0.15s ease-out; 
+	transition: all 0.15s ease-out;
+}
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+	opacity: 1;
+}
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+	opacity: 0;
+}
+</style>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+		disableOn: 700,
+		type: 'iframe',
+		mainClass: 'mfp-fade',
+		removalDelay: 160,
+		preloader: false,
+
+		fixedContentPos: false
+	});
+});
+</script>
 
 </head>
 
@@ -89,6 +137,9 @@
 </div>
 <!--Slider Start-->
 
+<!-- test -->
+<!-- test end -->
+
 <!-- shopping cart -->
 
 <div class="wrap">
@@ -113,7 +164,7 @@
 		<!-- jsp end -->
     </div>
     <div class="modal-footer">
-      <a href="compare.jsp" class="btn">Compare!</a>
+      <a href="compare.jsp"  class="btn" >Compare!</a>
       <a href="http://127.0.0.1:8080/WBSE_Parker/ComparisonListServlet.do?act=c" class="btn">Clear!</a>
     </div>
   </div>
@@ -214,10 +265,12 @@
 </div>
 <!--Main Body End-->
 
-<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+
+
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script src="js/jssor.js" type="text/javascript"></script>
 <script src="js/jssor.slider.js" type="text/javascript"></script>
 <script src="js/slider.js" type="text/javascript"></script>
+
 </body>
 </html>

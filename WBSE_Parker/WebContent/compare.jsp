@@ -6,29 +6,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>停車場比較清單</title>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<title>停車場比較</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 </head>
 <body>
 	<div>
-	<h3>比較停車場有：</h3>
+	<h3>比較清單：</h3>
 	<c:forEach var="compareEach" items="${sessionScope.compareList}">
 		<p>ID： ${compareEach.id} <br>
 		停車場名稱：${compareEach.name}</p>
 	</c:forEach>
-	
-		<table id="mytable">
-			<tr>
-				<td class="taiwanArea">地區</td>
-				<td class="name">停車場名</td>
-				<td class="fee">每小時收費</td>
-				<td class="type">停車場類型</td>
-				<td class="totalCar">總汽車位</td>
-				<td class="totalMotor">總機車位</td>
-			</tr>
+
+		<table id="mytable"class="table table-bordered" >
+		
+		<tbody>
+				<tr>
+					<td >地區</td>
+					<td >停車場名</td>
+					<td >每小時收費</td>
+					<td >停車場類型</td>
+					<td >總汽車位</td>
+					<td >總機車位</td>
+				</tr>
+
+
+			</tbody>
 		</table>
 		<div id="result"></div>
 	</div>
@@ -79,15 +83,14 @@
 
 			});
 		}
-		
+
 	<%if(session.getAttribute("compareList")!=null){%>
 		<%ArrayList<HistoryObject> compareList = (ArrayList<HistoryObject>) session.getAttribute("compareList");%>
 		<%for (int i = 0; i < compareList.size(); ++i) {%>
 			getLot(<%=compareList.get(i).getId().toString()%>);
 		<%}%>
 	<%}%>
-		
+
 	</script>
 </body>
 </html>
-
