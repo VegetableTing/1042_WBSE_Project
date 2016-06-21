@@ -10,12 +10,12 @@ import java.util.LinkedHashSet;
 import com.example.model.CountObject.number_object;
 
 
-public class GetAreaDataFromDB {
+public class GetAreaDetailDataFromDB {
 	ConnectionManager connectionManager;
 
 	Connection connection;
 
-	public GetAreaDataFromDB() {
+	public GetAreaDetailDataFromDB() {
 
 		connectionManager = new ConnectionManager();
 		connectionManager.openConnection();
@@ -24,15 +24,16 @@ public class GetAreaDataFromDB {
 		System.out.println("connectionManager");
 	}
 
-	public ArrayList<SimpleParkingDataObject> getAreaDB(String area) {
+	public ArrayList<SimpleParkingDataObject> getTheParkingData(String id) {
 		ArrayList<SimpleParkingDataObject> simpleArray = new ArrayList<SimpleParkingDataObject>();
 		
 		try {
 		
-			String findString = "SELECT originalId, taiwanCity, taiwanArea, name, fee, TYPE , totalCar, totalMotor FROM  `simple_parking_data` WHERE TaiwanCity = '新北市' AND TaiwanArea = ?";
+			String findString =  "SELECT originalId, taiwanCity, taiwanArea, name, fee, TYPE , totalCar, totalMotor FROM  `simple_parking_data` WHERE originalId=?";
 
 			PreparedStatement preparedStmtFindTheArea = connection.prepareStatement(findString);
-			preparedStmtFindTheArea.setString(1,area );
+			preparedStmtFindTheArea.setString(1,id );
+		
 			ResultSet resTheArea = preparedStmtFindTheArea.executeQuery();
 			
 			while (resTheArea.next()) {
@@ -50,4 +51,6 @@ public class GetAreaDataFromDB {
 			return simpleArray;
 		}
 	}
+
+	
 }
