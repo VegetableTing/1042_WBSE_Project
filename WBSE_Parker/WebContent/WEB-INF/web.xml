@@ -32,6 +32,6 @@
 	
   <welcome-file-list>
 
-    <welcome-file>compare.jsp</welcome-file>
+    <welcome-file>getAreaParking.do</welcome-file>
   </welcome-file-list>
 </web-app>
