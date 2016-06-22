@@ -26,26 +26,26 @@
 	<script type="text/javascript">
 		$.ajax({
 			dataType : "json",
-			url : "http://localhost:8080/WBSE_Parker/getPieChart.do",
+			url : "http://127.0.0.1:8080/WBSE_Parker/getPieChart.do",
 			data : "get",
 			success : function(data) {
 				console.log(data.value);
 				var dataset=[];
 				var i=0;
-				
+
 				console.log(data[0]);
-				
+
 				data.forEach(function(d){
 					dataset[i]=d.value;
 					++i;
 					});
-				
+
 				pieChart(dataset);
 			}
 		});
 		function pieChart(data) {
 			var dataset = data;
-			var svg_width = 700;
+			var svg_width = 1100;
 			var svg_height = 500;
 			var radius = Math.min(svg_width, svg_height) / 2;
 			var svg = d3.select("body").append("svg").attr("width", svg_width)

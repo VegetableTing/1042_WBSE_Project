@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="com.example.type.*" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
@@ -32,6 +37,54 @@
 <link rel="stylesheet" type="text/css" href="css/custom.css">
 <!-- shopping cart CSS-->
 <link rel="stylesheet" type="text/css" href="css/yee.css">
+<!-- windows-->
+<script src="js/jquery-3.0.0.min.js" type="text/javascript"></script>
+<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+<style type="text/css">
+/**
+ * Simple fade transition,
+ */
+.mfp-fade.mfp-bg {
+	opacity: 0;
+	-webkit-transition: all 0.15s ease-out; 
+	-moz-transition: all 0.15s ease-out; 
+	transition: all 0.15s ease-out;
+}
+.mfp-fade.mfp-bg.mfp-ready {
+	opacity: 0.8;
+}
+.mfp-fade.mfp-bg.mfp-removing {
+	opacity: 0;
+}
+
+.mfp-fade.mfp-wrap .mfp-content {
+	opacity: 0;
+	-webkit-transition: all 0.15s ease-out; 
+	-moz-transition: all 0.15s ease-out; 
+	transition: all 0.15s ease-out;
+}
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+	opacity: 1;
+}
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+	opacity: 0;
+}
+</style>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+		disableOn: 700,
+		type: 'iframe',
+		mainClass: 'mfp-fade',
+		removalDelay: 160,
+		preloader: false,
+
+		fixedContentPos: false
+	});
+});
+</script>
 
 </head>
 
@@ -74,7 +127,7 @@
         <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1300px;
             height: 800px; overflow: hidden;">
             <div >
-							<iframe scrolling="no" height="100%" width="100%"  src="https://alex100433.cartodb.com/viz/c1d5ed3a-36f4-11e6-aa6b-0ecfd53eb7d3/embed_map"></iframe	>
+				<iframe scrolling="no" height="100%" width="100%"  src="https://alex100433.cartodb.com/viz/c1d5ed3a-36f4-11e6-aa6b-0ecfd53eb7d3/embed_map"></iframe	>
             </div>
 
         </div>
@@ -83,6 +136,9 @@
     </div>
 </div>
 <!--Slider Start-->
+
+<!-- test -->
+<!-- test end -->
 
 <!-- shopping cart -->
 
@@ -101,14 +157,15 @@
       <a href="#" class="btn-close" aria-hidden="true">×</a>
     </div>
     <div class="modal-body">
-      <p>parker</p>
-      <p>parker</p>
-      <p>parker</p>
-      <p>parker</p>
+    	<!-- jsp -->
+	    <c:forEach var="compareEach" items="${sessionScope.compareList}">
+		<p>${compareEach.id} ： ${compareEach.name}</p>
+		</c:forEach>
+		<!-- jsp end -->
     </div>
     <div class="modal-footer">
-      <a href="#" class="btn">Compare!</a>
-      <a href="#" class="btn">Clear!</a>
+      <a href="compare.jsp"  class="btn" >Compare!</a>
+      <a href="http://127.0.0.1:8080/WBSE_Parker/ComparisonListServlet.do?act=c" class="btn">Clear!</a>
     </div>
   </div>
 <!-- shopping cart End -->
@@ -132,7 +189,7 @@
             <span> June 21, 2016 </span>
         </div>
         <div>
-        	<iframe src="./DashBoard.html" width="100%" height="1250"  scrolling="no" style="margin:0 auto;text-align:center;"></iframe>
+        	<iframe src="./DashBoard.html" width="1100" height="1250"  scrolling="no" style="margin:0 auto;text-align:center;"></iframe>
         </div>
         <div class="media">
         	<p>目前為該停車場中，低、中、高價錢的判斷方法。</p>
@@ -155,7 +212,7 @@
             <span> June 21, 2016 </span>
         </div>
         <div>
-        	<iframe src="./PieChart.html" width="700" height="500"  scrolling="no" style="margin:0 auto;text-align:center;"></iframe>
+        	<iframe src="./PieChart.html" width="1100" height="500"  scrolling="no" style="margin:0 auto;text-align:center;"></iframe>
         </div>
         <div class="media">
         	<p>顯示新北市的動態停車廠與靜態停車場的數量比例。</p>
@@ -208,10 +265,12 @@
 </div>
 <!--Main Body End-->
 
-<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+
+
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <script src="js/jssor.js" type="text/javascript"></script>
 <script src="js/jssor.slider.js" type="text/javascript"></script>
 <script src="js/slider.js" type="text/javascript"></script>
+
 </body>
 </html>

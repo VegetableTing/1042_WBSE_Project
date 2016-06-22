@@ -23,39 +23,45 @@ public class ComparisonListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {// store the name and id
+
+		String indexURL = "index.jsp";
+		String URL = "https://alex100433.cartodb.com/viz/c1d5ed3a-36f4-11e6-aa6b-0ecfd53eb7d3/embed_map";
 		HttpSession session = request.getSession();
 		ArrayList<HistoryObject> compareList;
-		compareList = (ArrayList<HistoryObject>) session.getAttribute("compareList");
+
 		HistoryObject history = new HistoryObject();
 
-		String act = request.getParameter("act");
-		if (act == null) {
-
-		} else if (act.equals("delete")) {// press the button of clear
-			compareList.clear();
-		}
-
-		if (compareList == null) {
+		if (session.getAttribute("compareList") == null) {
 			compareList = new ArrayList<HistoryObject>();
+			session.setAttribute("compareList", compareList);
+		} else {
+			compareList = (ArrayList<HistoryObject>) session.getAttribute("compareList");
 		}
-
-		history.setId((String)request.getParameter("id"));
-		history.setName((String)request.getParameter("name"));
 
 		boolean addFlag = true;
-		for (HistoryObject newsVar : compareList) {
-			if (newsVar.getId().equals(history.getId())) {
+		for (int i = 0; i < compareList.size(); ++i) {
+			if (compareList.get(i).getId().equals(request.getParameter("id"))) {
 				addFlag = false;
+				break;
 			}
-		}
-		if (addFlag) {
-			compareList.add(history);
+			System.out.println(compareList.get(i).getId());
 		}
 
-		session.setAttribute("compareList", compareList);
-		
-		response.sendRedirect(request.getParameter("id"));
-		
+		System.out.println(session.getAttribute("compareList"));
+		history.setId((String) request.getParameter("id"));
+		history.setName((String) request.getParameter("name"));
+
+		if (addFlag)
+			compareList.add(history);
+
+		if (request.getParameter("act") != null)
+			if (request.getParameter("act").equals("c")) {
+				session.removeAttribute("compareList");
+
+				URL = indexURL;
+			}
+		response.sendRedirect(URL);
+
 	}
 
 	/**
